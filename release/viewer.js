@@ -857,6 +857,9 @@ function Viewer(viewerPlugin, parameters) {
             if ( xhr.readyState === 4 ) {
                 if ( (xhr.status >= 200 && xhr.status < 300) || xhr.status === 0 ) {
                     mimetype = xhr.getResponseHeader('content-type');
+                    if (mimetype == null && params.mimetype) {
+                        mimetype = params.mimetype;
+                    }
 
                     if ( mimetype ) {
                         pluginRegistry.some(function ( pluginData ) {
@@ -962,10 +965,25 @@ function Viewer(viewerPlugin, parameters) {
         return false;
     }
 
+    function getQueryParams(qs) {
+        qs = qs.split('+').join(' ');
+
+        var params = {},
+            tokens,
+            re = /[?&]?([^=]+)=([^&]*)/g;
+
+        while (tokens = re.exec(qs)) {
+            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+        }
+
+        return params;
+    }
+
     window.onload = function () {
         var viewer,
             documentUrl = document.location.hash.substring(1),
             parameters  = parseSearchParameters(document.location),
+            params = getQueryParams(document.location.search),
             Plugin;
 
         if ( documentUrl ) {
@@ -977,7 +995,7 @@ function Viewer(viewerPlugin, parameters) {
             parameters.documentUrl = documentUrl;
 
             // trust the server most
-            estimateTypeByHeaderContentType(documentUrl, function ( pluginData ) {
+            estimateTypeByHeaderContentType(documentUrl, params, function ( pluginData ) {
                 if ( !pluginData ) {
                     if ( parameters.type ) {
                         pluginData = estimateTypeByFileExtension(parameters.type);
