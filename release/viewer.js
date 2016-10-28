@@ -850,7 +850,7 @@ function Viewer(viewerPlugin, parameters) {
             }
         };
 
-    function estimateTypeByHeaderContentType( documentUrl, cb ) {
+    function estimateTypeByHeaderContentType( documentUrl, params, cb ) {
         var xhr                = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             var mimetype, matchingPluginData;
