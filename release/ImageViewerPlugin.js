@@ -74,6 +74,8 @@ function ImageViewerPlugin() {
 		imgElement.setAttribute('src', documentUrl);
 		imgElement.setAttribute('alt', 'na');
 		imgElement.setAttribute('id', 'image');
+
+		document.getElementsByTagName("body")[0].className = 'image';
 		
 		viewerElement.appendChild(imgElement);
 		viewerElement.style.overflow = "auto";
