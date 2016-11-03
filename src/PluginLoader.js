@@ -106,13 +106,17 @@
             (function () {
                 var multimediaMimetypes      = [
                     'video/mp4',
+                    'video/mpeg',
                     'video/ogg',
                     'video/webm',
+                    'video/x-m4v',
+
                     'audio/aac',
                     'audio/mp4',
                     'audio/mpeg',
                     'audio/ogg',
                     'audio/wav',
+                    'audio/x-wav',
                     'audio/webm'];
                 var multimediaFileExtensions = [
                     'aac',

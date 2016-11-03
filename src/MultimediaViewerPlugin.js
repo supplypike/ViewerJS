@@ -11,9 +11,11 @@ function MultimediaViewerPlugin() {
 		self = this;
 
 	this.initialize = function (viewerElement, documentUrl) {
+		document.getElementsByTagName("body")[0].className = 'multimedia';
+
 		if(window.mimetype.indexOf("audio/") === 0) {	
 			videoElement=document.createElement("audio");
-			videoElement.setAttribute('poster', 'images/musicbg.png');
+			videoElement.setAttribute('poster', ' ');
 		} else {
 			videoElement=document.createElement("video");
 		}
@@ -31,7 +33,7 @@ function MultimediaViewerPlugin() {
 		viewerElement.style.overflow = "auto";
 		
 		// init viewerjs
-		videojs(document.getElementById('multimedia_viewer'), {controls:'enabled', techOrder:['flash','html5']}, function() {
+		videojs(document.getElementById('multimedia_viewer'), {controls:'enabled', autoplay: true, techOrder:['flash','html5']}, function() {
 		  // This is functionally the same as the previous example.
 		});
 

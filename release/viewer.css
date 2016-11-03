@@ -956,6 +956,9 @@ html[dir='rtl'] .dropdownToolbarButton {
     height: 52px;
 }
 
+.multimedia .menu { display: none; }
+.multimedia #canvasContainer { padding-bottom: 0; }
+
 .menu .left, .menu .right {
     margin: 5px;
 }
@@ -987,6 +990,14 @@ html[dir='rtl'] .dropdownToolbarButton {
 .menu .zoom-out {
     -webkit-mask:  url(images/minus.svg) no-repeat 50% 50%;
     mask: url(images/minus.svg) no-repeat 50% 50%;
+}
+
+.multimedia .vjs-poster {
+    mask: url("images/file-music.svg") no-repeat 50% 50%;
+    -webkit-mask: url("images/file-music.svg") no-repeat 50% 50%;
+    mask-size: auto 150px;
+    -webkit-mask-size: auto 100px;
+    background-color: white;
 }
 
 .video-js {
