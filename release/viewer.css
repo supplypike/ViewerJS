@@ -957,7 +957,7 @@ html[dir='rtl'] .dropdownToolbarButton {
 }
 
 .multimedia .menu { display: none; }
-.multimedia #canvasContainer { padding-bottom: 0; }
+.multimedia #canvasContainer { padding: 0; }
 
 .menu .left, .menu .right {
     margin: 5px;
