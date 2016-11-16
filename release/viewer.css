@@ -939,7 +939,9 @@ html[dir='rtl'] .dropdownToolbarButton {
 
 
 
-
+.video-js .vjs-big-play-button {
+    display: none;
+}
 
 
 
