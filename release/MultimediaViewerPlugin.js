@@ -11,31 +11,49 @@ function MultimediaViewerPlugin() {
 		self = this;
 
 	this.initialize = function (viewerElement, documentUrl) {
-		document.getElementsByTagName("body")[0].className = 'multimedia';
 
-		if(window.mimetype.indexOf("audio/") === 0) {	
+		if(window.mimetype.indexOf("audio/") === 0) {
+			document.getElementsByTagName("body")[0].className = 'multimedia audio';
 			videoElement=document.createElement("audio");
 			videoElement.setAttribute('poster', ' ');
 		} else {
+			document.getElementsByTagName("body")[0].className = 'multimedia video';
 			videoElement=document.createElement("video");
 		}
 		videoElement.setAttribute('preload', 'auto');
 		videoElement.setAttribute('id', 'multimedia_viewer');
 		videoElement.setAttribute('controls', 'controls');
 		videoElement.setAttribute('class', 'video-js vjs-default-skin');
-		
+
 		videoSource=document.createElement("source");
 		videoSource.setAttribute('src', documentUrl);
 		videoSource.setAttribute('type', window.mimetype);
 		videoElement.appendChild(videoSource);
 
+		videoElement.setAttribute('poster', "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", false);
+
 		viewerElement.appendChild(videoElement);
 		viewerElement.style.overflow = "auto";
+
+		var playPauseSource=document.createElement("div");
+		playPauseSource.setAttribute('class', 'playOrPause');
+		playPauseSource.setAttribute('id', 'playOrPause');
+		playPauseSource.addEventListener('click', function(){
+			if (videoElement.paused) {
+				videoElement.play();
+			} else {
+				videoElement.pause();
+			}
+		}, false);
+		viewerElement.appendChild(playPauseSource);
 		
 		// init viewerjs
-		videojs(document.getElementById('multimedia_viewer'), {controls:'enabled', autoplay: true, techOrder:['flash','html5']}, function() {
-		  // This is functionally the same as the previous example.
-		});
+		videojs(
+			videoElement,
+			{controls:'enabled', autoplay: true, techOrder:['flash','html5']},
+			function() {
+			}
+		);
 
 		self.onLoad();
 	};

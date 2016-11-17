@@ -790,14 +790,22 @@ html[dir='rtl'] .dropdownToolbarButton {
 
 
 
+.playOrPause {
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: block;
+    background-color: transparent;
+    border-radius: inherit;
+    border: 0;
+    z-index: 100000000000;
+}
+
 .video-js .vjs-big-play-button {
     display: none;
 }
-
-
-
-
-
 
 .menu {
     background-color: black;
@@ -845,7 +853,7 @@ html[dir='rtl'] .dropdownToolbarButton {
     mask: url(images/minus.svg) no-repeat 50% 50%;
 }
 
-.multimedia .vjs-poster {
+.audio .vjs-poster {
     mask: url("images/file-music.svg") no-repeat 50% 50%;
     -webkit-mask: url("images/file-music.svg") no-repeat 50% 50%;
     mask-size: auto 150px;
