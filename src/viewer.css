@@ -861,6 +861,10 @@ html[dir='rtl'] .dropdownToolbarButton {
     background-color: white;
 }
 
+.audio .vjs-fullscreen-control {
+    display: none;
+}
+
 .video-js {
     background-color: #32363F;
 }
